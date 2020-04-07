@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TMDB</string>
+    <string name="error_default">Oops…</string>
+
+    <string name="base_url_poster">http://image.tmdb.org/t/p/w342%s</string>
+    <string name="base_url_backdrop">https://image.tmdb.org/t/p/w780%s</string>
+    <string name="release">Release: %s</string>
+    <string name="budget">Budget: %s</string>
+    <string name="rating">Rating: %s</string>
+    <string name="popular_movies">Popular movies</string>
+    <string name="overview">Overview</string>
+</resources>

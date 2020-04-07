@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0d253f</color>
+    <color name="colorPrimaryDark">#0d253f</color>
+    <color name="colorAccent">#01b4e4</color>
+    <color name="colorControlHighlight">#90cea1</color>
+    <color name="colorBackgroundToast">#202020</color>
+    <color name="colorTextWhite">#B9B9B9</color>
+    <color name="colorBackgroundLight">#FFFFFF</color>
+    <color name="colorBackgroundMain">#EDEDED</color>
+
+    <color name="colorSkeleton">#B9B9B9</color>
+
+
+    <color name="colorTextPrimary">#000000</color>
+    <color name="colorTextSecondary">#1B1B1B</color>
+</resources>

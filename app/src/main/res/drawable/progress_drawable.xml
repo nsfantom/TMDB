@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list>
+    <item>
+        <rotate xmlns:android="http://schemas.android.com/apk/res/android"
+            android:duration="1000"
+            android:fromDegrees="0"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="360">
+
+            <shape
+                android:innerRadius="20dp"
+                android:shape="ring"
+                android:thickness="4dp"
+                android:useLevel="false">
+                <size
+                    android:width="48dp"
+                    android:height="48dp" />
+
+                <gradient
+                    android:centerColor="#0701b4e4"
+                    android:centerY="0.5"
+                    android:endColor="#0d253f"
+                    android:startColor="#0001b4e4"
+                    android:type="sweep"
+                    android:useLevel="false" />
+            </shape>
+
+        </rotate>
+    </item>
+    <item>
+        <rotate xmlns:android="http://schemas.android.com/apk/res/android"
+            android:duration="1000"
+            android:fromDegrees="450"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="45">
+
+            <shape
+                android:innerRadius="15dp"
+                android:shape="ring"
+                android:thickness="4dp"
+                android:useLevel="false">
+                <size
+                    android:width="36dp"
+                    android:height="36dp" />
+
+                <gradient
+                    android:centerColor="#0701b4e4"
+                    android:centerY="0.5"
+                    android:endColor="#0001b4e4"
+                    android:startColor="#0d253f"
+                    android:type="sweep"
+                    android:useLevel="false" />
+            </shape>
+
+        </rotate>
+    </item>
+    <item>
+        <rotate xmlns:android="http://schemas.android.com/apk/res/android"
+            android:duration="1000"
+            android:fromDegrees="0"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="360">
+
+            <shape
+                android:innerRadius="10dp"
+                android:shape="ring"
+                android:thickness="4dp"
+                android:useLevel="false">
+                <size
+                    android:width="48dp"
+                    android:height="48dp" />
+
+                <gradient
+                    android:centerColor="#0701b4e4"
+                    android:centerY="0.5"
+                    android:endColor="#0d253f"
+                    android:startColor="#0001b4e4"
+                    android:type="sweep"
+                    android:useLevel="false" />
+            </shape>
+
+
+        </rotate>
+    </item>
+</layer-list>

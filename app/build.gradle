@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "tm.fantom.tmdb"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField "String", "API_BASE_URL", "\"https://api.themoviedb.org/3/\""
+        buildConfigField "String", "API_KEY", "\"8e68138f7952ec119db927fdb09862ba\""
+
+        vectorDrawables.useSupportLibrary = true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+ext {
+    appCompatVersion = '1.2.0-alpha02'
+    recyclerVersion = '1.1.0'
+    swiperefreshVersion = '1.0.0'
+    cardViewVersion = '1.0.0'
+    retrofit2Version = '2.6.2'
+    rxJavaVersion = '2.2.17'
+    rxAndroidVersion = '2.1.1'
+    timberVersion = '4.7.1'
+    gsonVersion = '2.8.6'
+
+    daggerVersion = '2.23.2'
+
+    okhttp3Version = '4.2.2'
+
+    jodaTimeVersion = '2.10.1'
+
+    frescoVersion = '2.1.0'
+    shimmerVersion = '0.4.0'
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshVersion"
+    implementation "androidx.cardview:cardview:$cardViewVersion"
+
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2Version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2Version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2Version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3Version"
+
+    implementation "com.facebook.fresco:fresco:$frescoVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation "joda-time:joda-time:$jodaTimeVersion"
+
+    implementation "com.facebook.shimmer:shimmer:$shimmerVersion"
+
+}
