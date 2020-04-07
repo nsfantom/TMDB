@@ -65,11 +65,7 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
                     totalRecords = r.getTotalResults();
                     return parseMovies(r.getResults());
                 })
-                .subscribe(movies -> {
-                    view.showSearchResult(movies, currentPage > 1);
-                    Timber.e("movies: %s", movies.size());
-
-                }, this::parseErrorSilent)
+                .subscribe(movies -> view.showSearchResult(movies, currentPage > 1), this::parseErrorSilent)
         );
     }
 
@@ -92,8 +88,6 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
 
     @Override
     public void forceRefresh() {
-//        searchRequest.setUpdated(true);
-//        sharedStorage.saveApplySearchRequest(searchRequest);
         subscribe();
     }
 
@@ -108,10 +102,5 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
     public void unsubscribe() {
         clearDisposables();
     }
-
-//    private void showResumeSearch(Pair<String, List<ResumeMiddleModel>> pair) {
-//        view.showSearchResult(pair.first, pair.second, currentPage > 1);
-//        restoreFilters();
-//    }
 
 }

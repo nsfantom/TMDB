@@ -48,7 +48,6 @@ public final class TmApp extends Application {
                 .builder()
                 .apiModule(new ApiModule(this))
                 .build();
-//        appComponent.inject(this);
     }
 
 }
