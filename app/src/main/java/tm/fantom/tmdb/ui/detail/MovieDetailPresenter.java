@@ -16,7 +16,6 @@ import tm.fantom.tmdb.ui.base.BaseContract;
 public class MovieDetailPresenter extends BaseApiPresenter implements MovieDetailContract.Presenter {
 
     private MovieDetailContract.View view;
-    private MovieId movieId;
 
     @Override
     public void attach(MovieDetailContract.View view) {
@@ -30,8 +29,13 @@ public class MovieDetailPresenter extends BaseApiPresenter implements MovieDetai
 
     @Override
     public void subscribe() {
-        movieId = sharedStorage.getMovieId();
-        view.showTitle(movieId.getMovieName());
+        getCompositeDisposable().add(sharedStorage.getMovieIdSubject()
+                .doOnNext(this::getDetails)
+                .map(MovieId::getMovieName)
+                .subscribe(view::showTitle));
+    }
+
+    private void getDetails(MovieId movieId) {
         view.showProgress();
         getCompositeDisposable().add(
                 simpleApi.getMovieMovieId(movieId.getMovieId())

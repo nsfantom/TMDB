@@ -14,6 +14,8 @@ public interface DashboardContract {
 
         void showMovie();
 
+        void restoreToggle(boolean enabled);
+
     }
 
     interface Presenter extends BaseContract.Presenter<DashboardContract.View> {

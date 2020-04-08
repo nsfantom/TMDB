@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?themeBackgroundMain"
     android:orientation="vertical">
 
     <LinearLayout
@@ -63,7 +64,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvCategory"
-                        style="@style/TextSecondarySingleLine"
+                        style="?textSecondarySingleLine"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/default_margin"
@@ -71,7 +72,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvRating"
-                        style="@style/TextSecondarySingleLine"
+                        style="?textSecondarySingleLine"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/default_margin"
@@ -79,7 +80,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvReleaseDate"
-                        style="@style/TextSecondarySingleLine"
+                        style="?textSecondarySingleLine"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/default_margin"
@@ -87,7 +88,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvBudget"
-                        style="@style/TextSecondarySingleLine"
+                        style="?textSecondarySingleLine"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/default_margin"
@@ -97,14 +98,14 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTag"
-                style="@style/TextSecondarySingleLine"
+                style="?textSecondarySingleLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/default_margin"
                 android:singleLine="false" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextBlackBigSingleLine"
+                style="?textBigSingleLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacingX2"
@@ -113,7 +114,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvOverview"
-                style="@style/TextSecondarySingleLine"
+                style="?textSecondarySingleLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/default_margin"

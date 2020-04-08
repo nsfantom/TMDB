@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,13 +12,33 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:fitsSystemWindows">true</item>
+
+        <item name="textBigSingleLine">@style/TextBlackBigSingleLine</item>
+        <item name="textSecondarySingleLine">@style/TextSecondarySingleLine</item>
+        <item name="themeCardBackground">@color/colorBackgroundLight</item>
+        <item name="themeBackgroundMain">@color/colorBackgroundMain</item>
     </style>
 
-    <style name="AppThemeSplash" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/fg_splash</item>
+    <style name="AppThemeDark" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorBackgroundLight</item>
-        <item name="colorAccent">@color/colorBackgroundLight</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="textBigSingleLine">@style/TextLightBigSingleLine</item>
+        <item name="textSecondarySingleLine">@style/TextLightSecondarySingleLine</item>
+        <item name="themeCardBackground">@color/colorBackgroundDark</item>
+        <item name="themeBackgroundMain">@color/colorDarkBackgroundMain</item>
+
+    </style>
+
+    <style name="AppThemeSplash" parent="AppThemeLight">
+        <item name="android:windowBackground">@drawable/fg_splash</item>
     </style>
 
     <style name="MyProgressBar" parent="Widget.AppCompat.ProgressBar">
@@ -35,9 +55,22 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="TextLightBigSingleLine" parent="TextBlackBigSingleLine">
+        <item name="android:textColor">@color/colorDarkTextPrimary</item>
+    </style>
+
+
     <style name="TextSecondarySingleLine" parent="TextBlackBigSingleLine">
         <item name="android:textColor">@color/colorTextSecondary</item>
         <item name="android:textSize">@dimen/text_secondary</item>
+    </style>
+
+    <style name="TextLightSecondarySingleLine" parent="TextSecondarySingleLine">
+        <item name="android:textColor">@color/colorDarkTextSecondary</item>
+    </style>
+
+    <style name="ThemeToggleButton" parent="Widget.AppCompat.Button.Borderless">
+
     </style>
 
 </resources>

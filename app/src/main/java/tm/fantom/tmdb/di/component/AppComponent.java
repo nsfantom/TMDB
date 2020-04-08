@@ -8,6 +8,7 @@ import dagger.Component;
 import retrofit2.Retrofit;
 import tm.fantom.tmdb.di.module.ApiModule;
 import tm.fantom.tmdb.repo.SharedStorage;
+import tm.fantom.tmdb.ui.MainActivity;
 import tm.fantom.tmdb.ui.base.BaseApiPresenter;
 
 
@@ -22,4 +23,6 @@ public interface AppComponent {
     Resources resources();
 
     void inject(BaseApiPresenter baseApiPresenter);
+
+    void inject(MainActivity mainActivity);
 }

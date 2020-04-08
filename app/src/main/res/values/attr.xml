@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textBigSingleLine" format="reference" />
+    <attr name="textSecondarySingleLine" format="reference" />
+    <attr name="themeCardBackground" format="reference" />
+    <attr name="themeBackgroundMain" format="reference" />
+</resources>

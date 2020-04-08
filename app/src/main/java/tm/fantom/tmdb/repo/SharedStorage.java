@@ -9,16 +9,22 @@ import com.google.gson.GsonBuilder;
 
 import org.joda.time.DateTime;
 
+import io.reactivex.subjects.BehaviorSubject;
 import tm.fantom.tmdb.api.converter.DateTimeConverter;
 
 public final class SharedStorage {
     private static final String SESSION_ID = "auth_token";
-    private static final String MOVIE_ID = "movie_id";
+    private static final String THEME_DARK = "dark_mode";
 
     private SharedPreferences sharedPreferences;
     private Context context;
     private Gson gson;
 
+    private BehaviorSubject<MovieId> movieIdBehaviorSubject = BehaviorSubject.create();
+
+    public BehaviorSubject<MovieId> getMovieIdSubject() {
+        return movieIdBehaviorSubject;
+    }
 
     public SharedStorage(Context context) {
         this.context = context;
@@ -45,23 +51,15 @@ public final class SharedStorage {
         return token;
     }
 
-    public boolean saveMovieId(MovieId id) {
-        if (id == null) {
-            return getPrefs().edit().remove(MOVIE_ID).commit();
-        }
-        return getPrefs().edit()
-                .putString(MOVIE_ID, gson.toJson(id))
-                .commit();
+    public boolean saveDarkMode(boolean darkMode) {
+        if (darkMode)
+            return getPrefs().edit().putBoolean(THEME_DARK, true).commit();
+        else
+            return getPrefs().edit().remove(THEME_DARK).commit();
     }
 
-    public MovieId getMovieId() {
-        MovieId movieId = new MovieId(0);
-        String json = getPrefs().getString(MOVIE_ID, "");
-
-        if (!TextUtils.isEmpty(json)) {
-            movieId = gson.fromJson(json, MovieId.class);
-        }
-        return movieId;
+    public boolean isDarkMode() {
+        return getPrefs().getBoolean(THEME_DARK, false);
     }
 
     private SharedPreferences getPrefs() {

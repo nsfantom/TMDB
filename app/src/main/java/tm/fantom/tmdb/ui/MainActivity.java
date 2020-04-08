@@ -6,8 +6,12 @@ import android.view.View;
 
 import androidx.fragment.app.FragmentTransaction;
 
+import javax.inject.Inject;
+
 import tm.fantom.tmdb.R;
+import tm.fantom.tmdb.TmApp;
 import tm.fantom.tmdb.databinding.ActivityMainBinding;
+import tm.fantom.tmdb.repo.SharedStorage;
 import tm.fantom.tmdb.ui.base.BaseActivity;
 import tm.fantom.tmdb.ui.base.BaseFragment;
 import tm.fantom.tmdb.ui.dashboard.DashboardFragment;
@@ -17,6 +21,8 @@ public class MainActivity extends BaseActivity {
 
     private ActivityMainBinding layout;
     private BaseFragment currentFragment;
+    @Inject
+    SharedStorage sharedStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +33,25 @@ public class MainActivity extends BaseActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             layout.getRoot().setSystemUiVisibility(layout.getRoot().getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+        TmApp.get(this).getAppComponent().inject(this);
 
         if (savedInstanceState == null) {
-            setTheme(R.style.AppTheme);
             setUiOptions();
             navigateTo(Fragments.DASHBOARD);
         }
+        initThemeMode(sharedStorage.isDarkMode());
+    }
+
+    public void setThemeMode(boolean darkMode) {
+        if (sharedStorage.isDarkMode() != darkMode) {
+            sharedStorage.saveDarkMode(darkMode);
+//            initThemeMode(darkMode);
+            recreate();
+        }
+    }
+
+    private void initThemeMode(boolean darkMode) {
+        setTheme(darkMode ? R.style.AppThemeDark : R.style.AppThemeLight);
     }
 
     private void setUiOptions() {

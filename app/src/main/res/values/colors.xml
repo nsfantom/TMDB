@@ -14,4 +14,20 @@
 
     <color name="colorTextPrimary">#000000</color>
     <color name="colorTextSecondary">#1B1B1B</color>
+
+
+
+    <color name="colorDarkPrimary">#0d253f</color>
+    <color name="colorDarkPrimaryDark">#0d253f</color>
+    <color name="colorDarkAccent">#01b4e4</color>
+    <color name="colorDarkControlHighlight">#90cea1</color>
+    <color name="colorDarkBackgroundToast">#202020</color>
+    <color name="colorDarkTextWhite">#000000</color>
+    <color name="colorDarkBackgroundMain">#1B1B1B</color>
+    <color name="colorDarkSkeleton">#B9B9B9</color>
+
+    <color name="colorDarkTextPrimary">#B9B9B9</color>
+    <color name="colorDarkTextSecondary">#EDEDED</color>
+
+    <color name="colorBackgroundDark">#000000</color>
 </resources>

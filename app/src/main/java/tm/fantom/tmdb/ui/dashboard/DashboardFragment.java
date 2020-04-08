@@ -104,6 +104,13 @@ public class DashboardFragment extends BaseFragment implements DashboardContract
     }
 
     private void initClickListeners() {
+
+    }
+
+    @Override
+    public void restoreToggle(boolean enabled) {
+        layout.toggleButton.setChecked(enabled);
+        layout.toggleButton.setOnCheckedChangeListener((buttonView, isChecked) -> getParentActivity().setThemeMode(isChecked));
     }
 
     @Override

@@ -27,6 +27,7 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
     @Override
     public void attach(DashboardContract.View view) {
         this.view = view;
+        view.restoreToggle(sharedStorage.isDarkMode());
     }
 
     @Override
@@ -93,9 +94,8 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
 
     @Override
     public void onMovieClick(int id, String name) {
-        if (sharedStorage.saveMovieId(new MovieId(id).setMovieName(name))) {
-            view.showMovie();
-        }
+        sharedStorage.getMovieIdSubject().onNext(new MovieId(id).setMovieName(name));
+        view.showMovie();
     }
 
     @Override

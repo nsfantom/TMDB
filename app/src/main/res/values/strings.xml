@@ -9,4 +9,6 @@
     <string name="rating">Rating: %s</string>
     <string name="popular_movies">Popular movies</string>
     <string name="overview">Overview</string>
+    <string name="dark">Dark</string>
+    <string name="light">Light</string>
 </resources>
