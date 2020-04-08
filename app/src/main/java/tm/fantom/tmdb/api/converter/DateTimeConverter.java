@@ -31,7 +31,6 @@ public class DateTimeConverter implements JsonSerializer<DateTime>, JsonDeserial
 
     @Override
     public JsonElement serialize(DateTime src, Type typeOfSrc, JsonSerializationContext context) {
-//        return new JsonPrimitive(src.getMillis());
         return new JsonPrimitive(dateTimeFormatter.print(src));
     }
 
@@ -43,6 +42,5 @@ public class DateTimeConverter implements JsonSerializer<DateTime>, JsonDeserial
             return null;
         }
         return dateTimeFormatter.parseDateTime(json.getAsString());
-//        return dateTimeFormatter.parseDateTime(json.getAsString().replace(" UTC", "Z"));
     }
 }
