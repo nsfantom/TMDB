@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import tm.fantom.tmdb.R;
 import tm.fantom.tmdb.api.netmodel.GenresResult;
 import tm.fantom.tmdb.api.netmodel.MovieDetailResponse;
@@ -39,9 +38,9 @@ public class MovieDetailPresenter extends BaseApiPresenter implements MovieDetai
         view.showProgress();
         getCompositeDisposable().add(
                 simpleApi.getMovieMovieId(movieId.getMovieId())
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .compose(applyMaybeBackground())
                         .map(this::parseMovie)
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(m -> view.showData(m), this::parseError)
         );
     }

@@ -7,7 +7,10 @@ import androidx.annotation.StringRes;
 
 import javax.inject.Inject;
 
+import io.reactivex.MaybeTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 import tm.fantom.tmdb.TmApp;
 import tm.fantom.tmdb.api.req.SimpleApi;
@@ -68,5 +71,16 @@ public abstract class BaseApiPresenter {
     public void injectDependency(final Context context) {
         TmApp.get(context).getAppComponent().inject(this);
     }
+
+    protected <T> MaybeTransformer<T, T> applyMaybeAsync() {
+        return upstream -> upstream.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    protected <T> MaybeTransformer<T, T> applyMaybeBackground() {
+        return upstream -> upstream.subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io());
+    }
+
 
 }

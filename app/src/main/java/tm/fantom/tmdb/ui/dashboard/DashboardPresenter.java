@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 import tm.fantom.tmdb.R;
 import tm.fantom.tmdb.api.netmodel.MovieListObject;
@@ -21,8 +20,6 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
     private DashboardContract.View view;
     private int currentPage = 0;
     private int totalRecords = 0;
-    private boolean isLoading = false;
-    private AuthToken authToken;
 
     @Override
     public void attach(DashboardContract.View view) {
@@ -39,11 +36,10 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
     public void subscribe() {
         view.restorePosition();
 
-        authToken = sharedStorage.getAuthToken();
+        AuthToken authToken = sharedStorage.getAuthToken();
         if (TextUtils.isEmpty(authToken.getGuestSessionId()) || DateUtils.isExpired(authToken.getExpiresAt())) {
             getCompositeDisposable().add(simpleApi.getAuthenticationGuestSessionNew()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+                    .compose(applyMaybeAsync())
                     .subscribe(r -> {
                         if (r.success()) {
                             sharedStorage.saveAuthToken(AuthToken.fromNetwork(r));
@@ -59,13 +55,13 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
 
     private void getMovies() {
         getCompositeDisposable().add(simpleApi.getMoviePopular(currentPage + 1)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(applyMaybeBackground())
                 .map(r -> {
                     currentPage = r.getPage();
                     totalRecords = r.getTotalResults();
                     return parseMovies(r.getResults());
                 })
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(movies -> view.showSearchResult(movies, currentPage > 1), this::parseErrorSilent)
         );
     }
@@ -82,7 +78,7 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
     public void onLoadMore(int count) {
         view.showProgress();
         Timber.d("load more count: %s, total: %s", count, totalRecords);
-        if (!(totalRecords <= count - 1) && !isLoading) {
+        if (!(totalRecords <= count - 1)) {
             getMovies();
         }
     }
