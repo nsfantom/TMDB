@@ -85,6 +85,7 @@ public class DashboardPresenter extends BaseApiPresenter implements DashboardCon
 
     @Override
     public void forceRefresh() {
+        currentPage = 0;
         subscribe();
     }
 
